@@ -22,7 +22,7 @@ OUTPUT_FILE="$2"
 MODEL="qwen3:30b"
 
 
-echo "[INFO] Starting container..."
+echo "Starting container..."
 
 #run the container 
 docker run --rm --gpus all \
@@ -34,12 +34,12 @@ docker run --rm --gpus all \
   -w /workspace \
   ollama-img \
   -c "
-	echo '[INFO] Starting Ollama server...' ;
+	echo 'Starting Ollama server...' ;
         ollama serve & sleep 3 ;
-        echo '[INFO] Pulling model if missing...' ;
+        echo 'Pulling model if missing...' ;
         ollama pull $MODEL ;
-        echo '[INFO] Processing file...' ;
+        echo 'Processing file...' ;
         bash process_file.sh $INPUT_FILE $OUTPUT_FILE ;
   "
 
-echo "[INFO] Job complete. Output: $OUTPUT_FILE"
+echo "Job complete. Output: $OUTPUT_FILE"
